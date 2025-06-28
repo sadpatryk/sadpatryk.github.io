@@ -1,5 +1,6 @@
 import { IconChevronDown, IconFavicon } from '@tabler/icons-react';
 import { Burger, Center, Container, Group, Menu } from '@mantine/core';
+import { ActionToggle } from '@/components/ActionToggle/ActionToggle';
 import { useDisclosure } from '@mantine/hooks';
 import { Link } from 'react-router-dom';
 import classes from './HeaderMenu.module.scss';
@@ -55,6 +56,7 @@ export function HeaderMenu() {
         {link.label}
       </Link>
     );
+    
   });
 
   return (
@@ -65,6 +67,7 @@ export function HeaderMenu() {
           <Group gap={5} visibleFrom="sm">
             {items}
           </Group>
+          <ActionToggle />
           <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
         </div>
       </Container>

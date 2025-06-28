@@ -44,7 +44,8 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.2",
-    "recharts": "^2.15.4"
+    "recharts": "^2.15.4",
+    "sass": "^1.89.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",

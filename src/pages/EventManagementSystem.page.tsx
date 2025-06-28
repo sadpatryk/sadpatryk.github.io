@@ -2,13 +2,11 @@ import { HeaderMenu } from '@/components/HeaderMenu/HeaderMenu';
 import { UserInfoAction } from '@/components/UserInfoAction/UserInfoAction';
 import { Container } from '@mantine/core';
 import { FooterLinks } from '@/components/FooterLinks/FooterLinks';
-import { ArticlesCardsGrid } from '@/components/ArticlesCardsGrid/ArticlesCardsGrid';
 
-export function HomePage() {
+export function EventManagementSystemPage() {
   return (
     <>
       <HeaderMenu />
-      <ArticlesCardsGrid />
       <Container size="xs" mt="xl">
         <UserInfoAction />
       </Container>

@@ -1,5 +1,6 @@
 import { HomePage } from './pages/Home.page';
 import { ContactPage } from './pages/Contact.page';
+import { EventManagementSystemPage } from './pages/EventManagementSystem.page';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: '/contact',
     element: <ContactPage />,
+  },
+  {
+    path: '/event-management-system',
+    element: <EventManagementSystemPage />,
   },
 ]);
 

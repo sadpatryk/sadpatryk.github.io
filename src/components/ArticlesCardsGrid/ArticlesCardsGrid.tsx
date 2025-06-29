@@ -13,8 +13,8 @@ export function ArticlesCardsGrid() {
         component="a"
         href={project.path}
         className={classes.card}
-        withBorder
         bg="var(--mantine-color-body)"
+        style={{ border: '1px solid var(--mantine-color-border)' }}
       >
         <Box mb="sm">
           {Icon && <Icon size={32} />}

@@ -1,17 +1,14 @@
 import { HeaderMenu } from '@/components/HeaderMenu/HeaderMenu';
 import { UserInfoAction } from '@/components/UserInfoAction/UserInfoAction';
-import { Container, Text } from '@mantine/core';
+import { Container } from '@mantine/core';
 import { FooterLinks } from '@/components/FooterLinks/FooterLinks';
-import { CardGradientGrid } from '@/components/CardGradient/CardGradientGrid';
-import { HeroTitle } from '@/components/HeroTitle/HeroTitle';
 
-export function HomePage() {
+export function WorkOrderManagementPlatformPage() {
   return (
     <>
       <HeaderMenu />
-      <HeroTitle />
-      <Container py="xl">
-        <CardGradientGrid />
+      <Container size="xs" mt="xl">
+        <UserInfoAction />
       </Container>
       <FooterLinks />
     </>

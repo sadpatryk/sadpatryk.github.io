@@ -1,9 +1,10 @@
 import { HomePage } from './pages/Home.page';
 import { ContactPage } from './pages/Contact.page';
-import { EventManagementSystemPage } from './pages/EventManagementSystem.page';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { EventManagementPlatformPage } from './pages/EventManagementPlatform.page';
+import { WorkOrderManagementPlatformPage } from './pages/WorkOrderManagementPlatform.page';
+import { createHashRouter, RouterProvider } from 'react-router-dom'; // changed here
 
-const router = createBrowserRouter([
+const router = createHashRouter([ // changed here
   {
     path: '/',
     element: <HomePage />,
@@ -17,8 +18,12 @@ const router = createBrowserRouter([
     element: <ContactPage />,
   },
   {
-    path: '/event-management-system',
-    element: <EventManagementSystemPage />,
+    path: '/event-management-platform',
+    element: <EventManagementPlatformPage />,
+  },
+  {
+    path: '/work-order-management-platform',
+    element: <WorkOrderManagementPlatformPage />,
   },
 ]);
 

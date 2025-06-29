@@ -1,11 +1,11 @@
 import { Anchor, Text, Title } from '@mantine/core';
-import classes from './Welcome.module.css';
+import classes from './Welcome.module.scss';
 
 export function Welcome() {
   return (
     <>
-      <Title className={classes.title} ta="center" mt={100}>
-        Welcome to{' '}
+      <Title className={classes.title} ta="left" mt={100}>
+        Patryk Zięba{' '}
         <Text inherit variant="gradient" component="span" gradient={{ from: 'pink', to: 'yellow' }}>
           Mantine
         </Text>

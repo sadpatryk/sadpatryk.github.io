@@ -8,5 +8,6 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './vitest.setup.mjs',
-  }
+  },
+  base: '/sadpatryk.github.io/', 
 });

@@ -1,4 +1,4 @@
-import { IconBrandInstagram, IconBrandTwitter, IconBrandYoutube } from '@tabler/icons-react';
+import { IconBrandInstagram, IconBrandTwitter, IconBrandYoutube, IconFavicon } from '@tabler/icons-react';
 import { ActionIcon, Container, Group, Text } from '@mantine/core';
 import classes from './FooterLinks.module.scss';
 
@@ -49,9 +49,9 @@ export function FooterLinks() {
     <footer className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-          <IconBrandTwitter size={30} />
+          <IconFavicon size={30} />
           <Text size="xs" c="dimmed" className={classes.description}>
-            Build fully functional accessible web applications faster than ever
+            UX Practicioner, UI Designer.
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>

@@ -3,7 +3,7 @@ import { UserInfoAction } from '@/components/UserInfoAction/UserInfoAction';
 import { Container } from '@mantine/core';
 import { FooterLinks } from '@/components/FooterLinks/FooterLinks';
 
-export function EventManagementSystemPage() {
+export function EventManagementPlatformPage() {
   return (
     <>
       <HeaderMenu />

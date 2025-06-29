@@ -1,8 +1,8 @@
 import { IconChevronDown, IconFavicon } from '@tabler/icons-react';
-import { Burger, Center, Container, Group, Menu, Drawer, ScrollArea, Text } from '@mantine/core';
+import { Burger, Center, Container, Group, Menu, Drawer, ScrollArea, Text, Divider } from '@mantine/core';
 import { ActionToggle } from '@/components/ActionToggle/ActionToggle';
 import { useDisclosure } from '@mantine/hooks';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import classes from './HeaderMenu.module.scss';
 
 const links = [
@@ -24,6 +24,7 @@ const links = [
 
 export function HeaderMenu() {
   const [opened, { toggle, close }] = useDisclosure(false);
+  const location = useLocation();
 
   const items = links.map((link) => {
     const menuItems = link.links?.map((item) => (
@@ -63,17 +64,24 @@ export function HeaderMenu() {
   // Mobile nav items (flat list, you can enhance with collapsible sections if you want)
   const mobileItems = (
     <div>
-      {links.map((link) =>
+      {links.map((link, idx) =>
         link.links ? (
           <div key={link.label}>
+            {idx !== 0 && <Divider my="sm" />}
             <Text fw={700} mt="md" mb="xs">{link.label}</Text>
             {link.links.map((sublink) => (
               <Link
                 key={sublink.link}
                 to={sublink.link}
-                className={classes.link}
+                className={`${classes.link} ${location.pathname === sublink.link ? classes.activeLink : ''}`}
                 onClick={close}
-                style={{ display: 'block', padding: '8px 0' }}
+                style={{
+                  display: 'block',
+                  padding: '14px 0',
+                  fontSize: 18,
+                  fontWeight: location.pathname === sublink.link ? 700 : undefined,
+                  color: location.pathname === sublink.link ? 'var(--mantine-color-blue-6)' : undefined,
+                }}
               >
                 {sublink.label}
               </Link>
@@ -83,15 +91,22 @@ export function HeaderMenu() {
           <Link
             key={link.label}
             to={link.link}
-            className={classes.link}
+            className={`${classes.link} ${location.pathname === link.link ? classes.activeLink : ''}`}
             onClick={close}
-            style={{ display: 'block', padding: '8px 0' }}
+            style={{
+              display: 'block',
+              padding: '14px 0',
+              fontSize: 18,
+              fontWeight: location.pathname === link.link ? 700 : undefined,
+              color: location.pathname === link.link ? 'var(--mantine-color-blue-6)' : undefined,
+            }}
           >
             {link.label}
           </Link>
         )
       )}
     </div>
+
   );
 
   return (
@@ -100,7 +115,7 @@ export function HeaderMenu() {
         <Container size="md">
           <div className={classes.inner}>
             <IconFavicon size={28} />
-            <Group gap={5} visibleFrom="sm">
+            <Group gap={5} visibleFrom="sm" className={classes.rightAlign}>
               {items}
             </Group>
             <ActionToggle />

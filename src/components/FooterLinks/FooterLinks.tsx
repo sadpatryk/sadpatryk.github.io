@@ -1,41 +1,51 @@
 import { IconBrandInstagram, IconBrandTwitter, IconBrandYoutube, IconFavicon } from '@tabler/icons-react';
 import { ActionIcon, Container, Group, Text } from '@mantine/core';
+import { Link } from 'react-router-dom';
 import classes from './FooterLinks.module.scss';
 
 const data = [
   {
     title: 'About',
     links: [
-      { label: 'Features', link: '#' },
-      { label: 'Pricing', link: '#' },
-      { label: 'Support', link: '#' },
-      { label: 'Forums', link: '#' },
+      { label: 'Home', link: '/home' },
+      { label: 'Contact', link: '/contact' },
     ],
   },
   {
     title: 'My Work',
     links: [
-      { label: 'Contribute', link: '#' },
-      { label: 'Media assets', link: '#' },
-      { label: 'Changelog', link: '#' },
-      { label: 'Releases', link: '#' },
+      { label: 'Event Management Platform', link: '/event-management-platform' },
+      { label: 'Work Order Management Platform', link: '/work-order-management-platform' },
+      { label: 'Filmography', link: 'https://www.patryk.cc', external: true }, // Example external link
     ],
   }
 ];
 
 export function FooterLinks() {
   const groups = data.map((group) => {
-    const links = group.links.map((link, index) => (
-      <Text<'a'>
-        key={index}
-        className={classes.link}
-        component="a"
-        href={link.link}
-        onClick={(event) => event.preventDefault()}
-      >
-        {link.label}
-      </Text>
-    ));
+    const links = group.links.map((link, index) =>
+      link.external ? (
+        <Text<'a'>
+          key={index}
+          className={classes.link}
+          component="a"
+          href={link.link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {link.label}
+        </Text>
+      ) : (
+        <Text<typeof Link>
+          key={index}
+          className={classes.link}
+          component={Link}
+          to={link.link}
+        >
+          {link.label}
+        </Text>
+      )
+    );
 
     return (
       <div className={classes.wrapper} key={group.title}>

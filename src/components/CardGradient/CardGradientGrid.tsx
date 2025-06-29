@@ -6,7 +6,7 @@ export function CardGradientGrid() {
   return (
     <Container py="xl">
       <Text size="xl" fw={700} mb="md">
-        Sample my work...
+        What I do...
       </Text>
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
         {projects.map((project) => (

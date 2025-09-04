@@ -1,5 +1,6 @@
 import { IconAt, IconMapPin, IconPhone, IconSun } from '@tabler/icons-react';
 import { Box, Group, Text, useMantineColorScheme } from '@mantine/core';
+import React, { useState } from 'react';
 import classes from './ContactIcons.module.css';
 
 interface ContactIconProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'title'> {
@@ -12,10 +13,13 @@ interface ContactIconProps extends Omit<React.ComponentPropsWithoutRef<'div'>, '
 function ContactIcon({ icon: Icon, title, description, uri, ...others }: ContactIconProps) {
   const { colorScheme } = useMantineColorScheme();
   const isDark = colorScheme === 'dark';
+  const [blurred, setBlurred] = useState(title === 'Phone');
 
   const iconColor = isDark ? 'var(--mantine-color-gray-3)' : 'var(--mantine-color-dark-5)';
   const titleColor = isDark ? 'var(--mantine-color-gray-2)' : 'var(--mantine-color-dark-6)';
   const descColor = isDark ? 'var(--mantine-color-gray-1)' : 'var(--mantine-color-dark-5)';
+
+  const handleUnblur = () => setBlurred(false);
 
   return (
     <div className={classes.wrapper} {...others}>
@@ -30,15 +34,24 @@ function ContactIcon({ icon: Icon, title, description, uri, ...others }: Contact
         {uri ? (
           <a
             href={uri}
-            className={classes.description}
+            className={`${classes.description} ${title === 'Phone' && blurred ? classes.blurred : classes.unblurred}`}
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: descColor, textDecoration: 'none' }}
+            onClick={handleUnblur}
+            onMouseEnter={handleUnblur}
+            tabIndex={0}
           >
             {description}
           </a>
         ) : (
-          <Text className={classes.description} style={{ color: descColor }}>
+          <Text
+            className={`${classes.description} ${title === 'Phone' && blurred ? classes.blurred : classes.unblurred}`}
+            style={{ color: descColor }}
+            onClick={handleUnblur}
+            onMouseEnter={handleUnblur}
+            tabIndex={0}
+          >
             {description}
           </Text>
         )}

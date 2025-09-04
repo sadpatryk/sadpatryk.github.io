@@ -60,3 +60,28 @@ $mantine-breakpoint-sm: 48em;
     margin-top: 32px; // or any value you prefer for extra space
   }
 }
+
+.slotTitle {
+  display: inline-block;
+  min-width: 140px;
+  font-weight: 700;
+  transition: transform 0.25s cubic-bezier(0.4, 0.2, 0.2, 1), opacity 0.25s;
+  will-change: transform, opacity;
+}
+
+.slideIn {
+  transform: translateY(-30px);
+  opacity: 0;
+  animation: slotSlideIn 0.25s forwards;
+}
+
+@keyframes slotSlideIn {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

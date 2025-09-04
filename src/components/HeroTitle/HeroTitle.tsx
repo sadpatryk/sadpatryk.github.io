@@ -1,8 +1,30 @@
 import { Button, Container, Group, Text, Avatar } from '@mantine/core';
+import React, { useEffect, useRef, useState } from 'react';
 import classes from './HeroTitle.module.scss';
 
+const TITLES = [
+  'Solution Architect',
+  'UX Designer',
+  'Product Owner',
+  'Design System Engineer'
+];
 
 export function HeroTitle() {
+  const [currentTitle, setCurrentTitle] = useState(TITLES[0]);
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      index = (index + 1) % TITLES.length;
+      setAnimate(true);
+      setCurrentTitle(TITLES[index]);
+      setTimeout(() => setAnimate(false), 800); // Animation duration
+    }, 2200); // Slower slot-machine effect
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className={classes.wrapper}>
       <Container size={900} className={classes.inner}>
@@ -26,7 +48,11 @@ export function HeroTitle() {
               <Text component="span" variant="gradient" gradient={{ from: 'blue', to: 'pink' }} inherit>
                 Patryk Zięba
               </Text>{' '}
-              is a Solution Architect at {' '}
+              is a{' '}
+              <span className={`${classes.slotTitle} ${animate ? classes.slideIn : ''}`}>
+                {currentTitle}
+              </span>{' '}
+              at{' '}
               <Text
                 component="a"
                 href="https://www.redbeemedia.com/"

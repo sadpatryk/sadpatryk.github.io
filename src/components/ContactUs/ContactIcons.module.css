@@ -16,3 +16,14 @@
 .description {
   color: var(--mantine-color-white);
 }
+
+.blurred {
+  filter: blur(3px); /* Less intense blur */
+  transition: filter 0.1s; /* Faster transition */
+  cursor: pointer;
+}
+
+.unblurred {
+  filter: none;
+  transition: filter 0.1s;
+}
